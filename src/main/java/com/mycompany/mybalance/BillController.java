@@ -22,7 +22,6 @@ public class BillController {
 
     public BillController(Stage primaryStage,Scene billsUI){
         primary = primaryStage;
-        bills = billsUI;
     }
 
     public static void addBillarray(BillEntity newBill, Label newBillLabel){
