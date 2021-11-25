@@ -11,7 +11,6 @@ import java.util.Objects;
 
 public class BillController {
 
-    private final Scene bills;
     private final Stage primary;
     private double amountMem;
     private double eventualTransferAmount;
