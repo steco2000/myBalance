@@ -1,4 +1,4 @@
-package com.mycompany.myBalance;
+package com.mycompany.mybalance;
 
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;

@@ -1,4 +1,4 @@
-package com.mycompany.myBalance;
+package com.mycompany.mybalance;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

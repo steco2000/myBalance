@@ -1,4 +1,4 @@
-package com.mycompany.myBalance;
+package com.mycompany.mybalance;
 
 //TODO : IN TUTTO IL SISTEMA CERCARE DI RIDURRE AL MINIMO CHIAMATE STATIC PER RIDURRE IL COUPLING
 
