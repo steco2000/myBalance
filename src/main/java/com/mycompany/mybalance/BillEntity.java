@@ -1,24 +1,17 @@
 package com.mycompany.mybalance;
 
-public class BillEntity {
+import javafx.stage.Stage;
 
-    public double total;
+public class BillEntity extends AbstractBill{
+
     public String name;
     public int index;
 
-    public BillEntity(double amountToTransfer, BillEntity fromBill){
 
-        if(fromBill != null){
-            total = amountToTransfer;
-            if (fromBill.total >= amountToTransfer) {
-                fromBill.total -= amountToTransfer;
-            }else{
-                AlertBox.display("Error :", "Error : insufficent funds in "+fromBill.name);
-            }
-        }else{
-            total = amountToTransfer;
-        }
+    public BillEntity(double amountToTransfer, BillEntity fromBill, Stage primaryStage) {
+        super(amountToTransfer, fromBill, primaryStage);
     }
+
 
     public void submitTransaction(double amount){
         total += amount;
@@ -41,5 +34,7 @@ public class BillEntity {
         BillsScene.labelarray[fromBill.index].setText(fromBill.name+": $ "+fromBill.total);
         BillsScene.labelarray[this.index].setText(this.name+": $ "+this.total);
     }
+
+
 
 }

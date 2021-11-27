@@ -62,7 +62,7 @@ public class BillTransfertScene {
 
         Button confButt = new Button("Confirm");
         confButt.setOnAction(e -> {
-            controller.transferFunds(fromBillMenu,targetBillMenu,amountField,father);
+            BillController.transferFunds(fromBillMenu,targetBillMenu,amountField,father);
         });
 
         Button back = new Button("Cancel");

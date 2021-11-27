@@ -72,7 +72,7 @@ public class BillsScene {
 
         bills = new Scene(layout, 800, 400);
 
-        BillController controller = new BillController(primary,bills);
+        BillController controller = new BillController(primary);
         createBillScene.setUpCB(primary,home,this);
         trScene.setUp(primary,bills,controller,home);
 

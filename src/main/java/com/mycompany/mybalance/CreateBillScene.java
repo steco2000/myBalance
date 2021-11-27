@@ -95,9 +95,7 @@ public class CreateBillScene {
 
         createBS = new Scene(transScene, 800, 400);
 
-        BillController controller = new BillController(primary,createBS);
-        confButt.setOnAction(e -> controller.manageCreateBill(amountField,descField,fromBillSelectionMenu));
-
+        confButt.setOnAction(e -> BillController.manageCreateBill(amountField,descField,fromBillSelectionMenu));
     }
 
     public void display(){

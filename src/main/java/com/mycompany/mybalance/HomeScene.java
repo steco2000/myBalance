@@ -47,7 +47,7 @@ public class HomeScene {
         //dichiarazione schermata conti
         BillsScene bills = new BillsScene();
 
-        HomeController controller = new HomeController();
+        HomeController controller = new HomeController(primaryStage);
 
         //creazione homebutton
         Image homeImg = new Image("File:///C://Users//darkd//OneDrive//Desktop//immagini proto//logo.png");
