@@ -51,7 +51,7 @@ public class BillController {
             String fromBillName = fromBillSelectionMenu.getValue();
             BillEntity fromBill = searchBill(fromBillName);
             if (amountMem <= fromBill.total) {
-                contoProva = BillFactory.createBill(amountMem,fromBill,primary);
+                contoProva = BillFactory.createBill(amountMem,fromBill);
                 contoProva.name = descField.getText();
                 contoProva.index = totalBills;
 

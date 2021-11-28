@@ -7,9 +7,7 @@ public abstract class AbstractBill {
     public Stage primary;
     public double total;
 
-    public AbstractBill(double amountToTransfer, BillEntity fromBill, Stage primaryStage) {
-
-        primary = primaryStage;
+    public AbstractBill(double amountToTransfer, BillEntity fromBill) {
 
         if(fromBill != null){
             total = amountToTransfer;
@@ -24,8 +22,7 @@ public abstract class AbstractBill {
 
     }
 
-    public abstract void submitIncoming(double amount);
-    public abstract void submitExpense(double amount);
+    public abstract void submitTransaction(TransactionEntity trTodo);
     public abstract void withdrawFunds(double amount, BillEntity fromBill);
 
 }

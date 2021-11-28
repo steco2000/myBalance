@@ -14,7 +14,7 @@ public class HomeController {
     }
 
     public void createPrincipalBill(){
-        principal = BillFactory.createBill(2000,null,primary);
+        principal = BillFactory.createBill(2000,null);
         principal.name = "Principal Bill";
         Label principalLabel = new Label("Principal Bill : $ "+principal.total);
         principalLabel.setFont(new Font("Arial",30));

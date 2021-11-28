@@ -24,25 +24,14 @@ public class TransactionController {
         System.out.println(result);
         if (result) check = isDouble(amountField);
         if(result && check) {
-            if(type.equals("Incoming")) {
-                System.out.println("Description : " + descField.getText());
-                String billName = transactionBillMenu.getValue();
-                System.out.println("Selected bill : " + billName);
-                //todo : metodo statico, cercare di riformulare
-                frombill = BillController.searchBill(billName);
-                System.out.println("Bill sorted in array : " + frombill.name);
-                frombill.submitIncoming(amountMem);
-                primary.setScene(homeWindow);
-            }else{
-                System.out.println("Description : " + descField.getText());
-                String billName = transactionBillMenu.getValue();
-                System.out.println("Selected bill : " + billName);
-                //todo : metodo statico, cercare di riformulare
-                frombill = BillController.searchBill(billName);
-                System.out.println("Bill sorted in array : " + frombill.name);
-                frombill.submitExpense(amountMem);
-                primary.setScene(homeWindow);
-            }
+            System.out.println("Description : " + descField.getText());
+            String billName = transactionBillMenu.getValue();
+            System.out.println("Selected bill : " + billName);
+            //todo : metodo statico, cercare di riformulare
+            frombill = BillController.searchBill(billName);
+            System.out.println("Bill sorted in array : " + frombill.name);
+            TransactionEntity thisTransaction = TransactionFactory.createTransaction(amountMem,type,frombill,descField.getText());
+            primary.setScene(homeWindow);
         }
     }
 

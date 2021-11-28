@@ -7,29 +7,21 @@ public class BillEntity extends AbstractBill{
     public String name;
     public int index;
 
-
-    public BillEntity(double amountToTransfer, BillEntity fromBill, Stage primaryStage) {
-        super(amountToTransfer, fromBill, primaryStage);
+    public BillEntity(double amountToTransfer, BillEntity fromBill) {
+        super(amountToTransfer, fromBill);
     }
 
 
-    public void submitIncoming(double amount){
-        total += amount;
-        HomeScene.avbalance += amount;
-        String balanceMenuSelecetedItem = HomeScene.billBalanceMenu.getValue();
-        if(balanceMenuSelecetedItem.equals("Total")){
-            HomeScene.abview.setText("$ " + HomeScene.avbalance);
-        }else{
-            BillEntity selected = BillController.searchBill(balanceMenuSelecetedItem);
-            HomeScene.abview.setText("$ " + selected.total);
+    public void submitTransaction(TransactionEntity trTodo){
+        System.out.println("Transaction specifies - type : "+trTodo.type+", amount : "+trTodo.amount+", bill : "+trTodo.billRef.name);
+        if (trTodo.type.equals("Incoming")){
+            total += trTodo.amount;
+            HomeScene.avbalance += trTodo.amount;
         }
-        System.out.println("Total available balance after transaction : $ "+HomeScene.avbalance);
-        (BillsScene.labelarray[index]).setText(name+" : $"+total);
-    }
-
-    public void submitExpense(double amount){
-        total -= amount;
-        HomeScene.avbalance += amount;
+        else {
+            total -= trTodo.amount;
+            HomeScene.avbalance -= trTodo.amount;
+        }
         String balanceMenuSelecetedItem = HomeScene.billBalanceMenu.getValue();
         if(balanceMenuSelecetedItem.equals("Total")){
             HomeScene.abview.setText("$ " + HomeScene.avbalance);

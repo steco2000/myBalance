@@ -4,8 +4,8 @@ import javafx.stage.Stage;
 
 public class BillFactory {
 
-    public static BillEntity createBill(double amountToTransfer, BillEntity fromBill, Stage primaryStage){
-        return new BillEntity(amountToTransfer, fromBill, primaryStage);
+    public static BillEntity createBill(double amountToTransfer, BillEntity fromBill){
+        return new BillEntity(amountToTransfer, fromBill);
     }
 
 }
