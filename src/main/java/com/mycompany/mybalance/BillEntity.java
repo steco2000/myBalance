@@ -13,8 +13,22 @@ public class BillEntity extends AbstractBill{
     }
 
 
-    public void submitTransaction(double amount){
+    public void submitIncoming(double amount){
         total += amount;
+        HomeScene.avbalance += amount;
+        String balanceMenuSelecetedItem = HomeScene.billBalanceMenu.getValue();
+        if(balanceMenuSelecetedItem.equals("Total")){
+            HomeScene.abview.setText("$ " + HomeScene.avbalance);
+        }else{
+            BillEntity selected = BillController.searchBill(balanceMenuSelecetedItem);
+            HomeScene.abview.setText("$ " + selected.total);
+        }
+        System.out.println("Total available balance after transaction : $ "+HomeScene.avbalance);
+        (BillsScene.labelarray[index]).setText(name+" : $"+total);
+    }
+
+    public void submitExpense(double amount){
+        total -= amount;
         HomeScene.avbalance += amount;
         String balanceMenuSelecetedItem = HomeScene.billBalanceMenu.getValue();
         if(balanceMenuSelecetedItem.equals("Total")){

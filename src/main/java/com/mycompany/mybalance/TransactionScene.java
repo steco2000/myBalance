@@ -68,32 +68,40 @@ public class TransactionScene{
 
         Label dMenuLabel = new Label("Select a bill");
 
+        Label trTypeLabel = new Label("Select the type of the transaction :");
+        ChoiceBox<String> trTypeList = new ChoiceBox<>();
+        trTypeList.getItems().addAll("Incoming","Expense");
+        trTypeList.setValue("Incoming");
+
         //creazione bottone competa transazione
         Button confButt = new Button("Confirm Transaction");
-        confButt.setOnAction(e -> controller.manageTransaction(amountField,descField,transactionBillMenu));     //chiama il metodo manageTransaction che si occupa di effettuare le operazioni di gestione della transazione richiesta
+        confButt.setOnAction(e -> controller.manageTransaction(amountField,descField,transactionBillMenu,trTypeList.getValue()));     //chiama il metodo manageTransaction che si occupa di effettuare le operazioni di gestione della transazione richiesta
 
         //SETTAGGIO SCHERMATA TRANSAZIONI
         VBox topMenu = new VBox(30);
         topMenu.getChildren().addAll(upper);
+
 
         GridPane centerctn = new GridPane();
         centerctn.setPadding(new Insets(10,10,10,10));
         centerctn.setVgap(8);
         centerctn.setHgap(10);
 
-        GridPane.setConstraints(amount,0,0);
-        GridPane.setConstraints(amountField,1,0);
-        GridPane.setConstraints(desc,0,1);
-        GridPane.setConstraints(descField,1,1);
-        GridPane.setConstraints(confButt,1,3);
-        GridPane.setConstraints(dMenuLabel, 0, 2);
-        GridPane.setConstraints(transactionBillMenu, 1,2);
+        GridPane.setConstraints(trTypeLabel,0,0);
+        GridPane.setConstraints(trTypeList,1,0);
+        GridPane.setConstraints(amount,0,1);
+        GridPane.setConstraints(amountField,1,1);
+        GridPane.setConstraints(desc,0,2);
+        GridPane.setConstraints(descField,1,2);
+        GridPane.setConstraints(confButt,1,4);
+        GridPane.setConstraints(dMenuLabel, 0, 3);
+        GridPane.setConstraints(transactionBillMenu, 1,3);
 
         BorderPane transScene = new BorderPane();
         transScene.setTop(topMenu);
         transScene.setLeft(centerctn);
 
-        centerctn.getChildren().addAll(amount,amountField,desc,descField,confButt,dMenuLabel,transactionBillMenu);
+        centerctn.getChildren().addAll(trTypeLabel,trTypeList,amount,amountField,desc,descField,confButt,dMenuLabel,transactionBillMenu);
 
         transactions = new Scene(transScene, 800, 400);
 

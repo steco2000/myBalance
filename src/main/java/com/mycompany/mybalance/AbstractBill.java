@@ -24,7 +24,8 @@ public abstract class AbstractBill {
 
     }
 
-    public abstract void submitTransaction(double amount);
+    public abstract void submitIncoming(double amount);
+    public abstract void submitExpense(double amount);
     public abstract void withdrawFunds(double amount, BillEntity fromBill);
 
 }

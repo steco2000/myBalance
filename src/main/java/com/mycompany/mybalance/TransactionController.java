@@ -17,21 +17,32 @@ public class TransactionController {
     }
 
     //metodo evento gestione transazioni (ciò che succede quando si preme confirm transaction)
-    public void manageTransaction(TextField amountField, TextField descField, ChoiceBox<String> transactionBillMenu){
+    public void manageTransaction(TextField amountField, TextField descField, ChoiceBox<String> transactionBillMenu,String type){
         BillEntity frombill;
         boolean check = false;
         boolean result = ConfirmBox.display("Confirming Transaction", "Are you sure?",false);
         System.out.println(result);
         if (result) check = isDouble(amountField);
         if(result && check) {
-            System.out.println("Description : " + descField.getText());
-            String billName = (String) transactionBillMenu.getValue();
-            System.out.println("Selected bill : "+billName);
-            //todo : metodo statico, cercare di riformulare
-            frombill = BillController.searchBill(billName);
-            System.out.println("Bill sorted in array : "+frombill.name);
-            frombill.submitTransaction(amountMem);
-            primary.setScene(homeWindow);
+            if(type.equals("Incoming")) {
+                System.out.println("Description : " + descField.getText());
+                String billName = transactionBillMenu.getValue();
+                System.out.println("Selected bill : " + billName);
+                //todo : metodo statico, cercare di riformulare
+                frombill = BillController.searchBill(billName);
+                System.out.println("Bill sorted in array : " + frombill.name);
+                frombill.submitIncoming(amountMem);
+                primary.setScene(homeWindow);
+            }else{
+                System.out.println("Description : " + descField.getText());
+                String billName = transactionBillMenu.getValue();
+                System.out.println("Selected bill : " + billName);
+                //todo : metodo statico, cercare di riformulare
+                frombill = BillController.searchBill(billName);
+                System.out.println("Bill sorted in array : " + frombill.name);
+                frombill.submitExpense(amountMem);
+                primary.setScene(homeWindow);
+            }
         }
     }
 
@@ -41,6 +52,10 @@ public class TransactionController {
         try{
             message = message.replace(",",".");
             double amount = Double.parseDouble(message);
+            if (amount <= 0){
+                AlertBox.display("Error","Transaction import can't be zero or negative");
+                return false;
+            }
             System.out.println("Amount is : " + amount);
             amountMem = amount;
             return true;

@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 
 public class myBalance extends Application {
 
-    boolean loginEnabled = false;
+    boolean loginEnabled = true;
 
     public static void main(String[] args) {
         launch(args);
