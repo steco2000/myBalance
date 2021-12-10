@@ -8,7 +8,7 @@ public class LoginController {
 
     Stage primary;
     String username = "steco2000";
-    String password = "password1234";
+    String password = "stesi2oo5";
 
     public LoginController(Stage primaryStage){
         primary = primaryStage;
@@ -18,7 +18,8 @@ public class LoginController {
         String insertedUN = usernameText.getText();
         String insertedPassw = passwordText.getText();
         if(insertedUN.equals(username) && insertedPassw.equals(password)){
-            home.display();
+            GUIBuilder builder = new GUIBuilder(primary);
+            builder.launch();
         }else{
             AlertBox.display("Error","Incorrect username or password");
         }

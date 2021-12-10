@@ -14,20 +14,17 @@ public class myBalance extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        if(loginEnabled) {
+        if (loginEnabled) {
             LoginScene login = new LoginScene(primaryStage);
             login.setUp();
             login.display();
-        }else {
-            primaryStage.setTitle("myBalance");
-            primaryStage.setResizable(false);    //TODO : blocco dimensione schermata, da sostituire in seguito
-            HomeScene home = new HomeScene(primaryStage);
-            home.setUp();
-            home.display();
-            primaryStage.show();
+        }else{
+            GUIBuilder builder = new GUIBuilder(primaryStage);
+            builder.launch();
         }
 
     }
+
 }
 
 
